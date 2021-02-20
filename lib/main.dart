@@ -43,12 +43,16 @@ class _MyAppState extends State<MyApp> {
               shrinkWrap: true,
               padding: EdgeInsets.symmetric(horizontal: 20),
               children: [
+                // TODO: 两个输入之后的存储上传逻辑没写
                 TitleInputField(),
                 _divider(),
                 BodyInputField(),
+                // TODO: 图片选择之后，长按图片有删除功能，最多四张，图片的临时存储和上传没写
                 ImagesGridView(),
+                // TODO: 网络请求获取tag没写
                 TagView(),
                 _divider(),
+                // TODO: 提交没写
                 SubmitButton(),
               ],
             ),
@@ -70,7 +74,7 @@ class _SubmitButtonState extends State<SubmitButton> {
     return Container(
       child: Center(
         child: TextButton(
-          onPressed: (){},
+          onPressed: () {},
           child: Text(
             '提交',
             style: TextStyle(
@@ -140,6 +144,7 @@ class _TabGridViewState extends State<TabGridView>
     with TickerProviderStateMixin {
   AnimationController _animationController;
   String currentTab;
+
   // TODO: 网络请求 tabs  还有 部门介绍
   var list = ['单纯吐槽', '天外天', '教务处', '学工部', '后勤保障处'];
 
@@ -274,7 +279,7 @@ class _TitleInputFieldState extends State<TitleInputField> {
   Widget build(BuildContext context) {
     return Container(
       child: Padding(
-        padding: const EdgeInsets.fromLTRB(0,15,0,10),
+        padding: const EdgeInsets.fromLTRB(0, 15, 0, 10),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
@@ -285,10 +290,9 @@ class _TitleInputFieldState extends State<TitleInputField> {
                 keyboardType: TextInputType.text,
                 textInputAction: TextInputAction.done,
                 style: TextStyle(
-                  color: Color(0xff303c66),
-                  fontWeight: FontWeight.bold,
-                  fontSize: 14
-                ),
+                    color: Color(0xff303c66),
+                    fontWeight: FontWeight.bold,
+                    fontSize: 14),
                 minLines: 1,
                 maxLines: 10,
                 decoration: InputDecoration.collapsed(
@@ -355,8 +359,7 @@ class _BodyInputFieldState extends State<BodyInputField> {
             style: TextStyle(
                 color: Color(0xff000000),
                 fontWeight: FontWeight.normal,
-                fontSize: 13
-            ),
+                fontSize: 13),
             decoration: InputDecoration.collapsed(
               hintStyle: TextStyle(
                 color: Color(0xffd0d1d6),
@@ -400,8 +403,8 @@ class _ImagesGridViewState extends State<ImagesGridView> {
   List<ByteData> images = List<ByteData>();
   List<Asset> resultList = List<Asset>();
   int maxImage = 4;
-  String _error;
 
+  //TODO: 这里选完图片以后的逻辑没搞
   //TODO: https://sh1d0w.github.io/multi_image_picker/#/gettingstarted 具体见这里
   Future<void> loadAssets() async {
     String error;
@@ -423,8 +426,6 @@ class _ImagesGridViewState extends State<ImagesGridView> {
           selectionLimitReachedText: "足够了.",
         ),
       );
-
-      var color = Color(0xffabcdef);
     } on Exception catch (e) {
       error = e.toString();
       print('error:!!!!!!!!!!' + error);
@@ -441,9 +442,7 @@ class _ImagesGridViewState extends State<ImagesGridView> {
       images.add(data);
     }
 
-    setState(() {
-      if (error == null) _error = 'No Error Dectected';
-    });
+    setState(() {});
   }
 
   @override
