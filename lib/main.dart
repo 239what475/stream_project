@@ -48,6 +48,7 @@ class _MyAppState extends State<MyApp> {
                 _divider(),
                 BodyInputField(),
                 // TODO: 图片选择之后，长按图片有删除功能，最多四张，图片的临时存储和上传没写
+                // TODO: 图片选择的自定义界面中，有一张图片是放在android/src/drawable中的
                 ImagesGridView(),
                 // TODO: 网络请求获取tag没写
                 TagView(),
@@ -424,6 +425,7 @@ class _ImagesGridViewState extends State<ImagesGridView> {
           startInAllView: false,
           selectCircleStrokeColor: "#f7f7f8",
           selectionLimitReachedText: "足够了.",
+          okButtonDrawable: "@drawable/ok",
         ),
       );
     } on Exception catch (e) {
